@@ -1,287 +1,261 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { 
-  Github, 
-  Mail, 
-  Terminal,
-  Layout,
-  MapPin,
-  PenTool,
-  ShieldCheck,
-  Monitor,
-  Sparkles,
-  ExternalLink,
-  Palette,
-  FileText
-} from 'lucide-react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zarin Tasnim | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .text-outline {
+            -webkit-text-stroke: 1px rgba(255,255,255,0.1);
+            color: transparent;
+        }
+        .custom-blur {
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-[#050505] text-white selection:bg-indigo-500/30 overflow-x-hidden">
 
-const App = () => {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (e, id) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const fadeInUp = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.6, ease: "easeOut" }
-  };
-
-  const projects = [
-    {
-      title: "Household Management System",
-      cat: "UI/UX CASE STUDY",
-      desc: "An app-based solution designed to streamline domestic chores and task scheduling.",
-      tools: ["Figma", "User Research", "Prototyping"],
-      icon: <Layout className="w-8 h-8 text-blue-400" />
-    },
-    {
-      title: "Mobile Shop Management",
-      cat: "SOFTWARE ENGINEERING",
-      desc: "OOP-based inventory and billing system with a focus on data integrity and clean UI.",
-      tools: ["C#", "MySQL", "OOP"],
-      icon: <Terminal className="w-8 h-8 text-purple-400" />
-    },
-    {
-      title: "Food Delivery Platform",
-      cat: "FULL STACK WEB",
-      desc: "Responsive ordering system with real-time database integration for local businesses.",
-      tools: ["JS", "MySQL", "CSS3"],
-      icon: <Monitor className="w-8 h-8 text-emerald-400" />
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-indigo-500/30 overflow-x-hidden">
-      
-      {/* Background Decor */}
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none z-0">
-        <div className="absolute top-[-5%] left-[-5%] w-[50%] h-[50%] bg-indigo-600/5 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-5%] right-[-5%] w-[50%] h-[50%] bg-blue-600/5 blur-[120px] rounded-full" />
-      </div>
-
-      {/* NAV */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#050505]/90 backdrop-blur-md py-4' : 'py-8'}`}>
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="bg-indigo-600 text-white px-2 py-1 rounded font-black text-xs uppercase italic">ZT</div>
-            <span className="font-bold text-lg tracking-tighter uppercase italic">Zarin Tasnim.</span>
-          </div>
-          <div className="hidden md:flex gap-8 text-[11px] font-bold tracking-widest text-white/40 uppercase">
-            <a href="#works" onClick={(e) => scrollToSection(e, 'works')} className="hover:text-white transition-colors cursor-pointer">Case Studies</a>
-            <a href="#research" onClick={(e) => scrollToSection(e, 'research')} className="hover:text-white transition-colors cursor-pointer">Research</a>
-            <a href="#credentials" onClick={(e) => scrollToSection(e, 'credentials')} className="hover:text-white transition-colors cursor-pointer">Education</a>
-          </div>
-          <div className="flex gap-4">
-            <a href="https://github.com/ZarinTasnim20" target="_blank" className="text-white/40 hover:text-white transition-colors"><Github className="w-4 h-4" /></a>
-            <a href="https://www.behance.net/zarintasnim2025" target="_blank" className="text-white/40 hover:text-white transition-colors"><Palette className="w-4 h-4" /></a>
-          </div>
-        </div>
-      </nav>
-
-      {/* HERO SECTION */}
-      <section className="relative pt-40 pb-20 px-6 min-h-[90vh] flex items-center">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="space-y-8"
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20">
-              <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
-              <span className="text-[10px] font-bold uppercase tracking-widest text-indigo-400">Software Engineer • UI/UX Designer</span>
-            </div>
-            <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] italic">
-              INNOVATING <br/> 
-              <span className="text-indigo-600">DIGITAL</span> <br/>
-              INTERFACES.
-            </h1>
-            
-            <div className="space-y-4 border-l-2 border-indigo-600/30 pl-6">
-              <p className="text-gray-300 text-lg leading-relaxed font-medium">
-                I am a Software Engineer (AIUB) bridging the gap between <span className="text-white font-bold underline decoration-indigo-500/50 underline-offset-4">technical logic</span> and <span className="text-white font-bold underline decoration-indigo-500/50 underline-offset-4">human-centered design</span>.
-              </p>
-              <p className="text-gray-400 text-sm leading-relaxed max-w-lg">
-                Currently Junior UI/UX Designer at <strong>ARS</strong> and pursuing <strong>EMIT at University of Dhaka (IIT)</strong>. Focused on creating functional, aesthetically pleasing systems.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-4 pt-4">
-              <button 
-                onClick={(e) => scrollToSection(e, 'works')}
-                className="px-8 py-4 bg-white text-black text-[11px] font-black uppercase tracking-widest rounded hover:bg-indigo-600 hover:text-white transition-all shadow-lg shadow-white/5"
-              >
-                Explore My Work
-              </button>
-              
-              <a 
-                href="Zarin Tasnim.(CV).pdf" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="px-8 py-4 bg-indigo-600/10 border border-indigo-600/30 text-indigo-400 text-[11px] font-black uppercase tracking-widest rounded hover:bg-indigo-600 hover:text-white transition-all flex items-center gap-2"
-              >
-                <FileText className="w-4 h-4" /> View CV
-              </a>
-            </div>
-          </motion.div>
-
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="relative flex justify-center lg:justify-end">
-            <div className="w-full max-w-[420px] aspect-[4/5] rounded-[2.5rem] overflow-hidden border border-white/10 bg-white/5 relative group">
-              <img 
-                src="571119290_1335941701275583_902202480084366565_n.jpg" 
-                onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800' }}
-                className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0"
-                alt="Zarin Tasnim"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent opacity-60" />
-            </div>
-            
-            <div className="absolute -bottom-6 -right-6 p-5 bg-indigo-600 rounded-2xl shadow-2xl hidden md:block transform rotate-2">
-              <div className="flex items-center gap-3 text-white">
-                 <MapPin className="w-4 h-4 text-white/70" />
-                 <span className="text-xs font-black uppercase tracking-widest">Malibagh Railgate, Dhaka</span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CASE STUDIES */}
-      <section id="works" className="py-32 px-6 max-w-7xl mx-auto">
-        <motion.div {...fadeInUp} className="mb-20">
-          <h2 className="text-4xl font-black italic uppercase tracking-tighter leading-none">Design <br/>Case Studies.</h2>
-        </motion.div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {projects.map((p, i) => (
-            <motion.div key={i} {...fadeInUp} className="group p-8 bg-white/5 border border-white/10 rounded-[2rem] hover:bg-white/[0.07] transition-all">
-                <div className="p-3 bg-black/50 rounded-lg w-fit mb-6">{p.icon}</div>
-                <div className="text-[10px] font-bold text-indigo-500 mb-3 uppercase tracking-widest">{p.cat}</div>
-                <h3 className="text-xl font-bold mb-4 uppercase tracking-tight">{p.title}</h3>
-                <p className="text-gray-400 text-sm mb-6 leading-relaxed">{p.desc}</p>
-                <div className="flex flex-wrap gap-2">
-                    {p.tools.map(t => (
-                      <span key={t} className="text-[9px] font-bold text-white/30 bg-white/5 px-2 py-1 rounded border border-white/5 uppercase">{t}</span>
-                    ))}
-                </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* RESEARCH SECTION */}
-      <section id="research" className="py-32 bg-[#080808] px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.div {...fadeInUp} className="mb-16">
-            <h2 className="text-4xl font-black italic uppercase tracking-tighter leading-none">Research <br/>Publications.</h2>
-          </motion.div>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            <motion.a 
-              href="https://link.springer.com/chapter/10.1007/978-3-031-34732-0_34"
-              target="_blank"
-              {...fadeInUp} 
-              className="p-10 bg-white/5 border border-white/10 rounded-[2.5rem] block group hover:border-indigo-600 transition-all"
-            >
-              <div className="text-[10px] font-bold text-indigo-500 mb-4 uppercase tracking-[0.2em]">HCI International 2023, Denmark</div>
-              <h3 className="text-2xl font-bold uppercase italic leading-tight group-hover:text-indigo-400 transition-colors">PAINTIQUE: Interaction Model of Line Following Spray-Painting Robot</h3>
-              <p className="mt-6 text-gray-400 text-sm leading-relaxed">Exploring the intersection of robotics and artistic interaction models in a professional spray-painting context.</p>
-            </motion.a>
-
-            <motion.a 
-              href="https://link.springer.com/chapter/10.1007/978-981-99-8715-3"
-              target="_blank"
-              {...fadeInUp} 
-              className="p-10 bg-white/5 border border-white/10 rounded-[2.5rem] block group hover:border-indigo-600 transition-all"
-            >
-              <div className="text-[10px] font-bold text-indigo-500 mb-4 uppercase tracking-[0.2em]">ICSR 2023: Social Robotics</div>
-              <h3 className="text-2xl font-bold uppercase italic leading-tight group-hover:text-indigo-400 transition-colors">Can a Robot Collaborate with Alpana Artists? Concept Design</h3>
-              <p className="mt-6 text-gray-400 text-sm leading-relaxed">A conceptual design study on social robotics collaborating with traditional artists in Bangladesh.</p>
-            </motion.a>
-          </div>
-        </div>
-      </section>
-
-      {/* ACADEMIC PATH & CREDENTIALS */}
-      <section id="credentials" className="py-32 px-6">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20">
-          <div className="space-y-12">
-            <h3 className="text-3xl font-black italic uppercase tracking-tighter">Academic Path.</h3>
-            <div className="space-y-6">
-               <div className="p-8 bg-white/5 rounded-[2rem] border border-white/10">
-                  <p className="text-[10px] font-bold text-indigo-500 mb-1 uppercase tracking-widest">Ongoing</p>
-                  <h4 className="font-bold text-xl uppercase italic">University of Dhaka (IIT)</h4>
-                  <p className="text-sm text-gray-400 font-medium">Executive Masters in Information Technology (EMIT)</p>
-               </div>
-               <div className="p-8 bg-white/5 rounded-[2rem] border border-white/10">
-                  <p className="text-[10px] font-bold text-gray-500 mb-1 uppercase tracking-widest">Graduated 2024</p>
-                  <h4 className="font-bold text-xl uppercase italic">American International University-Bangladesh (AIUB)</h4>
-                  <p className="text-sm text-gray-400 mb-1">Bachelor of Computer Science & Engineering</p>
-                  <p className="text-xs font-bold text-indigo-400 uppercase tracking-widest underline decoration-indigo-500/30 underline-offset-4">Major: Software Engineering • CGPA: 3.63</p>
-               </div>
-               <div className="p-8 bg-white/5 rounded-[2rem] border border-white/10 opacity-70">
-                  <p className="text-[10px] font-bold text-gray-500 mb-1 uppercase tracking-widest">Secondary Education</p>
-                  <h4 className="font-bold text-xl uppercase italic">Motijheel Govt. Girls High School</h4>
-                  <p className="text-sm text-gray-400">Science Stream • GPA: 5.00/5.00</p>
-               </div>
-            </div>
-          </div>
-          
-          <div className="space-y-12">
-            <h3 className="text-3xl font-black italic uppercase tracking-tighter">Certifications.</h3>
-            <div className="grid gap-4">
-               {[
-                 { name: "Cyber Security Training", org: "BCC - EDGE Project", icon: <ShieldCheck className="w-5 h-5" /> },
-                 { name: "Digital Skills: User Experience", org: "Accenture", icon: <PenTool className="w-5 h-5" /> },
-                 { name: "Intro to UI/UX Design", org: "Great Learning Academy", icon: <Sparkles className="w-5 h-5" /> },
-                 { name: "Security Architecture", org: "Cisco Networking Academy", icon: <ShieldCheck className="w-5 h-5" /> }
-               ].map((cert, i) => (
-                 <div key={i} className="flex items-center gap-5 p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
-                   <div className="text-indigo-500">{cert.icon}</div>
-                   <div>
-                      <h5 className="font-bold text-sm uppercase leading-tight">{cert.name}</h5>
-                      <p className="text-[10px] text-gray-500 uppercase font-black tracking-tight">{cert.org}</p>
-                   </div>
-                 </div>
-               ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer id="contact" className="py-32 px-6 text-center border-t border-white/5">
-        <div className="max-w-4xl mx-auto space-y-12">
-          <h2 className="text-6xl md:text-8xl font-black italic tracking-tighter uppercase leading-none">Let's <br/><span className="text-indigo-600">Work.</span></h2>
-          <div className="flex flex-col md:flex-row justify-center gap-6">
-            <a href="mailto:tasnimtozarin2.1@gmail.com" className="px-10 py-5 bg-white text-black font-black uppercase tracking-widest text-[11px] rounded flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
-              <Mail className="w-4 h-4" /> Send Email
-            </a>
-            <div className="flex gap-4">
-               <a href="https://github.com/ZarinTasnim20" target="_blank" className="px-8 py-5 border border-white/10 rounded-xl font-bold uppercase text-[11px] tracking-widest hover:border-white transition-colors">Github</a>
-               <a href="https://www.behance.net/zarintasnim2025" target="_blank" className="px-8 py-5 border border-white/10 rounded-xl font-bold uppercase text-[11px] tracking-widest hover:border-white transition-colors">Behance</a>
-            </div>
-          </div>
-        </div>
-        <div className="mt-40 pt-10 text-[10px] font-bold text-white/20 tracking-[0.6em] uppercase">
-          © 2026 Zarin Tasnim • Malibagh Railgate, Dhaka
-        </div>
-      </footer>
-
+    <!-- Background Decor -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none z-0">
+        <div class="absolute top-[-5%] left-[-5%] w-[50%] h-[50%] bg-indigo-600/5 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-[-5%] right-[-5%] w-[50%] h-[50%] bg-blue-600/5 blur-[120px] rounded-full"></div>
     </div>
-  );
-};
 
-export default App;
+    <!-- NAV -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-8">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="bg-indigo-600 text-white px-2 py-1 rounded font-black text-xs uppercase italic">ZT</div>
+                <span class="font-bold text-lg tracking-tighter uppercase italic">Zarin Tasnim.</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-[11px] font-bold tracking-widest text-white/40 uppercase">
+                <a href="#works" class="hover:text-white transition-colors">Case Studies</a>
+                <a href="#research" class="hover:text-white transition-colors">Research</a>
+                <a href="#credentials" class="hover:text-white transition-colors">Education</a>
+            </div>
+            <div class="flex gap-4">
+                <a href="https://github.com/ZarinTasnim20" target="_blank" class="text-white/40 hover:text-white transition-colors"><i data-lucide="github" class="w-4 h-4"></i></a>
+                <a href="https://www.behance.net/zarintasnim2025" target="_blank" class="text-white/40 hover:text-white transition-colors"><i data-lucide="palette" class="w-4 h-4"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-40 pb-20 px-6 min-h-[90vh] flex items-center">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20">
+                    <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-indigo-400">Software Engineer • UI/UX Designer</span>
+                </div>
+                <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] italic">
+                    INNOVATING <br> 
+                    <span class="text-indigo-600">DIGITAL</span> <br>
+                    INTERFACES.
+                </h1>
+                
+                <div class="space-y-4 border-l-2 border-indigo-600/30 pl-6">
+                    <p class="text-gray-300 text-lg leading-relaxed font-medium">
+                        I am a Software Engineer (AIUB) bridging the gap between <span class="text-white font-bold underline decoration-indigo-500/50 underline-offset-4">technical logic</span> and <span class="text-white font-bold underline decoration-indigo-500/50 underline-offset-4">human-centered design</span>.
+                    </p>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-lg">
+                        Currently Junior UI/UX Designer at <strong>ARS</strong> and pursuing <strong>EMIT at University of Dhaka (IIT)</strong>. Focused on creating functional, aesthetically pleasing systems.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#works" class="px-8 py-4 bg-white text-black text-[11px] font-black uppercase tracking-widest rounded hover:bg-indigo-600 hover:text-white transition-all shadow-lg shadow-white/5">
+                        Explore My Work
+                    </a>
+                    <a href="Zarin Tasnim.(CV).pdf" target="_blank" class="px-8 py-4 bg-indigo-600/10 border border-indigo-600/30 text-indigo-400 text-[11px] font-black uppercase tracking-widest rounded hover:bg-indigo-600 hover:text-white transition-all flex items-center gap-2">
+                        <i data-lucide="file-text" class="w-4 h-4"></i> View CV
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative flex justify-center lg:justify-end">
+                <div class="w-full max-w-[420px] aspect-[4/5] rounded-[2.5rem] overflow-hidden border border-white/10 bg-white/5 relative group">
+                    <img 
+                        src="571119290_1335941701275583_902202480084366565_n.jpg" 
+                        onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800'"
+                        class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0"
+                        alt="Zarin Tasnim"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent opacity-60"></div>
+                </div>
+                
+                <div class="absolute -bottom-6 -right-6 p-5 bg-indigo-600 rounded-2xl shadow-2xl hidden md:block transform rotate-2">
+                    <div class="flex items-center gap-3 text-white">
+                         <i data-lucide="map-pin" class="w-4 h-4 text-white/70"></i>
+                         <span class="text-xs font-black uppercase tracking-widest">Malibagh Railgate, Dhaka</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section id="works" class="py-32 px-6 max-w-7xl mx-auto">
+        <div class="mb-20">
+            <h2 class="text-4xl font-black italic uppercase tracking-tighter leading-none">Design <br>Case Studies.</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <div class="group p-8 bg-white/5 border border-white/10 rounded-[2rem] hover:bg-white/[0.07] transition-all">
+                <div class="p-3 bg-black/50 rounded-lg w-fit mb-6 text-blue-400"><i data-lucide="layout" class="w-8 h-8"></i></div>
+                <div class="text-[10px] font-bold text-indigo-500 mb-3 uppercase tracking-widest">UI/UX CASE STUDY</div>
+                <h3 class="text-xl font-bold mb-4 uppercase tracking-tight">Household Management System</h3>
+                <p class="text-gray-400 text-sm mb-6 leading-relaxed">An app-based solution designed to streamline domestic chores and task scheduling.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-[9px] font-bold text-white/30 bg-white/5 px-2 py-1 rounded border border-white/5 uppercase">Figma</span>
+                    <span class="text-[9px] font-bold text-white/30 bg-white/5 px-2 py-1 rounded border border-white/5 uppercase">User Research</span>
+                </div>
+            </div>
+            <!-- Project 2 -->
+            <div class="group p-8 bg-white/5 border border-white/10 rounded-[2rem] hover:bg-white/[0.07] transition-all">
+                <div class="p-3 bg-black/50 rounded-lg w-fit mb-6 text-purple-400"><i data-lucide="terminal" class="w-8 h-8"></i></div>
+                <div class="text-[10px] font-bold text-indigo-500 mb-3 uppercase tracking-widest">SOFTWARE ENGINEERING</div>
+                <h3 class="text-xl font-bold mb-4 uppercase tracking-tight">Mobile Shop Management</h3>
+                <p class="text-gray-400 text-sm mb-6 leading-relaxed">OOP-based inventory and billing system with a focus on data integrity and clean UI.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-[9px] font-bold text-white/30 bg-white/5 px-2 py-1 rounded border border-white/5 uppercase">C#</span>
+                    <span class="text-[9px] font-bold text-white/30 bg-white/5 px-2 py-1 rounded border border-white/5 uppercase">MySQL</span>
+                </div>
+            </div>
+            <!-- Project 3 -->
+            <div class="group p-8 bg-white/5 border border-white/10 rounded-[2rem] hover:bg-white/[0.07] transition-all">
+                <div class="p-3 bg-black/50 rounded-lg w-fit mb-6 text-emerald-400"><i data-lucide="monitor" class="w-8 h-8"></i></div>
+                <div class="text-[10px] font-bold text-indigo-500 mb-3 uppercase tracking-widest">FULL STACK WEB</div>
+                <h3 class="text-xl font-bold mb-4 uppercase tracking-tight">Food Delivery Platform</h3>
+                <p class="text-gray-400 text-sm mb-6 leading-relaxed">Responsive ordering system with real-time database integration for local businesses.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-[9px] font-bold text-white/30 bg-white/5 px-2 py-1 rounded border border-white/5 uppercase">JS</span>
+                    <span class="text-[9px] font-bold text-white/30 bg-white/5 px-2 py-1 rounded border border-white/5 uppercase">CSS3</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESEARCH SECTION -->
+    <section id="research" class="py-32 bg-[#080808] px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16">
+                <h2 class="text-4xl font-black italic uppercase tracking-tighter leading-none">Research <br>Publications.</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <a href="https://link.springer.com/chapter/10.1007/978-3-031-34732-0_34" target="_blank" class="p-10 bg-white/5 border border-white/10 rounded-[2.5rem] block group hover:border-indigo-600 transition-all">
+                    <div class="text-[10px] font-bold text-indigo-500 mb-4 uppercase tracking-[0.2em]">HCI International 2023, Denmark</div>
+                    <h3 class="text-2xl font-bold uppercase italic leading-tight group-hover:text-indigo-400 transition-colors">PAINTIQUE: Interaction Model of Line Following Spray-Painting Robot</h3>
+                    <p class="mt-6 text-gray-400 text-sm leading-relaxed">Exploring the intersection of robotics and artistic interaction models in a professional spray-painting context.</p>
+                </a>
+
+                <a href="https://link.springer.com/chapter/10.1007/978-981-99-8715-3" target="_blank" class="p-10 bg-white/5 border border-white/10 rounded-[2.5rem] block group hover:border-indigo-600 transition-all">
+                    <div class="text-[10px] font-bold text-indigo-500 mb-4 uppercase tracking-[0.2em]">ICSR 2023: Social Robotics</div>
+                    <h3 class="text-2xl font-bold uppercase italic leading-tight group-hover:text-indigo-400 transition-colors">Can a Robot Collaborate with Alpana Artists? Concept Design</h3>
+                    <p class="mt-6 text-gray-400 text-sm leading-relaxed">A conceptual design study on social robotics collaborating with traditional artists in Bangladesh.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACADEMIC PATH & CREDENTIALS -->
+    <section id="credentials" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20">
+            <div class="space-y-12">
+                <h3 class="text-3xl font-black italic uppercase tracking-tighter">Academic Path.</h3>
+                <div class="space-y-6">
+                    <div class="p-8 bg-white/5 rounded-[2rem] border border-white/10">
+                        <p class="text-[10px] font-bold text-indigo-500 mb-1 uppercase tracking-widest">Ongoing</p>
+                        <h4 class="font-bold text-xl uppercase italic">University of Dhaka (IIT)</h4>
+                        <p class="text-sm text-gray-400 font-medium">Executive Masters in Information Technology (EMIT)</p>
+                    </div>
+                    <div class="p-8 bg-white/5 rounded-[2rem] border border-white/10">
+                        <p class="text-[10px] font-bold text-gray-500 mb-1 uppercase tracking-widest">Graduated 2024</p>
+                        <h4 class="font-bold text-xl uppercase italic">American International University-Bangladesh (AIUB)</h4>
+                        <p class="text-sm text-gray-400 mb-1">Bachelor of Computer Science & Engineering</p>
+                        <p class="text-xs font-bold text-indigo-400 uppercase tracking-widest underline decoration-indigo-500/30 underline-offset-4">Major: Software Engineering • CGPA: 3.63</p>
+                    </div>
+                    <div class="p-8 bg-white/5 rounded-[2rem] border border-white/10 opacity-70">
+                        <p class="text-[10px] font-bold text-gray-500 mb-1 uppercase tracking-widest">Secondary Education</p>
+                        <h4 class="font-bold text-xl uppercase italic">Motijheel Govt. Girls High School</h4>
+                        <p class="text-sm text-gray-400">Science Stream • GPA: 5.00/5.00</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="space-y-12">
+                <h3 class="text-3xl font-black italic uppercase tracking-tighter">Certifications.</h3>
+                <div class="grid gap-4">
+                    <div class="flex items-center gap-5 p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
+                        <div class="text-indigo-500"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
+                        <div>
+                            <h5 class="font-bold text-sm uppercase leading-tight">Cyber Security Training</h5>
+                            <p class="text-[10px] text-gray-500 uppercase font-black tracking-tight">BCC - EDGE Project</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-5 p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
+                        <div class="text-indigo-500"><i data-lucide="pen-tool" class="w-5 h-5"></i></div>
+                        <div>
+                            <h5 class="font-bold text-sm uppercase leading-tight">Digital Skills: User Experience</h5>
+                            <p class="text-[10px] text-gray-500 uppercase font-black tracking-tight">Accenture</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-5 p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
+                        <div class="text-indigo-500"><i data-lucide="sparkles" class="w-5 h-5"></i></div>
+                        <div>
+                            <h5 class="font-bold text-sm uppercase leading-tight">Intro to UI/UX Design</h5>
+                            <p class="text-[10px] text-gray-500 uppercase font-black tracking-tight">Great Learning Academy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="py-32 px-6 text-center border-t border-white/5">
+        <div class="max-w-4xl mx-auto space-y-12">
+            <h2 class="text-6xl md:text-8xl font-black italic tracking-tighter uppercase leading-none">Let's <br><span class="text-indigo-600">Work.</span></h2>
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <a href="mailto:tasnimtozarin2.1@gmail.com" class="px-10 py-5 bg-white text-black font-black uppercase tracking-widest text-[11px] rounded flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                    <i data-lucide="mail" class="w-4 h-4"></i> Send Email
+                </a>
+                <div class="flex gap-4">
+                    <a href="https://github.com/ZarinTasnim20" target="_blank" class="px-8 py-5 border border-white/10 rounded-xl font-bold uppercase text-[11px] tracking-widest hover:border-white transition-colors">Github</a>
+                    <a href="https://www.behance.net/zarintasnim2025" target="_blank" class="px-8 py-5 border border-white/10 rounded-xl font-bold uppercase text-[11px] tracking-widest hover:border-white transition-colors">Behance</a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-40 pt-10 text-[10px] font-bold text-white/20 tracking-[0.6em] uppercase">
+            © 2026 Zarin Tasnim • Malibagh Railgate, Dhaka
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-[#050505]/90', 'backdrop-blur-md', 'py-4');
+                navbar.classList.remove('py-8');
+            } else {
+                navbar.classList.remove('bg-[#050505]/90', 'backdrop-blur-md', 'py-4');
+                navbar.classList.add('py-8');
+            }
+        });
+    </script>
+</body>
+</html>
