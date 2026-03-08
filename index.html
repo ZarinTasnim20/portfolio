@@ -24,7 +24,6 @@ const App = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Smooth scroll function for the "Explore My Work" button
   const scrollToSection = (e, id) => {
     e.preventDefault();
     const element = document.getElementById(id);
@@ -67,7 +66,7 @@ const App = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-indigo-500/30 overflow-x-hidden">
       
-      {/* BACKGROUND DECOR */}
+      {/* Background Decor */}
       <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none z-0">
         <div className="absolute top-[-5%] left-[-5%] w-[50%] h-[50%] bg-indigo-600/5 blur-[120px] rounded-full" />
         <div className="absolute bottom-[-5%] right-[-5%] w-[50%] h-[50%] bg-blue-600/5 blur-[120px] rounded-full" />
@@ -81,13 +80,13 @@ const App = () => {
             <span className="font-bold text-lg tracking-tighter uppercase italic">Zarin Tasnim.</span>
           </div>
           <div className="hidden md:flex gap-8 text-[11px] font-bold tracking-widest text-white/40 uppercase">
-            <a href="#works" onClick={(e) => scrollToSection(e, 'works')} className="hover:text-white transition-colors">Case Studies</a>
-            <a href="#research" onClick={(e) => scrollToSection(e, 'research')} className="hover:text-white transition-colors">Research</a>
-            <a href="#credentials" onClick={(e) => scrollToSection(e, 'credentials')} className="hover:text-white transition-colors">Education</a>
+            <a href="#works" onClick={(e) => scrollToSection(e, 'works')} className="hover:text-white transition-colors cursor-pointer">Case Studies</a>
+            <a href="#research" onClick={(e) => scrollToSection(e, 'research')} className="hover:text-white transition-colors cursor-pointer">Research</a>
+            <a href="#credentials" onClick={(e) => scrollToSection(e, 'credentials')} className="hover:text-white transition-colors cursor-pointer">Education</a>
           </div>
           <div className="flex gap-4">
-            <a href="https://www.behance.net/zarintasnim2025" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white transition-colors"><ExternalLink className="w-4 h-4" /></a>
-            <a href="https://dribbble.com/tasnim2025" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white transition-colors"><Palette className="w-4 h-4" /></a>
+            <a href="https://github.com/ZarinTasnim20" target="_blank" className="text-white/40 hover:text-white transition-colors"><Github className="w-4 h-4" /></a>
+            <a href="https://www.behance.net/zarintasnim2025" target="_blank" className="text-white/40 hover:text-white transition-colors"><Palette className="w-4 h-4" /></a>
           </div>
         </div>
       </nav>
@@ -110,18 +109,16 @@ const App = () => {
               INTERFACES.
             </h1>
             
-            {/* ABOUT ME */}
             <div className="space-y-4 border-l-2 border-indigo-600/30 pl-6">
               <p className="text-gray-300 text-lg leading-relaxed font-medium">
                 I am a Software Engineer (AIUB) bridging the gap between <span className="text-white font-bold underline decoration-indigo-500/50 underline-offset-4">technical logic</span> and <span className="text-white font-bold underline decoration-indigo-500/50 underline-offset-4">human-centered design</span>.
               </p>
               <p className="text-gray-400 text-sm leading-relaxed max-w-lg">
-                I specialize in building functional, aesthetically pleasing systems. Currently, I am a Junior UI/UX Designer at **ARS** and pursuing my **EMIT at the University of Dhaka (IIT)**.
+                Currently Junior UI/UX Designer at <strong>ARS</strong> and pursuing <strong>EMIT at University of Dhaka (IIT)</strong>. Focused on creating functional, aesthetically pleasing systems.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-4 pt-4">
-              {/* Explore Work Button */}
               <button 
                 onClick={(e) => scrollToSection(e, 'works')}
                 className="px-8 py-4 bg-white text-black text-[11px] font-black uppercase tracking-widest rounded hover:bg-indigo-600 hover:text-white transition-all shadow-lg shadow-white/5"
@@ -129,7 +126,6 @@ const App = () => {
                 Explore My Work
               </button>
               
-              {/* View CV Button - UPDATED LINK to match your uploaded file */}
               <a 
                 href="Zarin Tasnim.(CV).pdf" 
                 target="_blank" 
@@ -138,19 +134,13 @@ const App = () => {
               >
                 <FileText className="w-4 h-4" /> View CV
               </a>
-              
-              <div className="flex gap-2">
-                <a href="https://github.com/ZarinTasnim20" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/5 rounded border border-white/10 hover:bg-white/10 transition-all">
-                  <Github className="w-5 h-5" />
-                </a>
-              </div>
             </div>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="relative flex justify-center lg:justify-end">
             <div className="w-full max-w-[420px] aspect-[4/5] rounded-[2.5rem] overflow-hidden border border-white/10 bg-white/5 relative group">
               <img 
-                src="profile.jpg" 
+                src="571119290_1335941701275583_902202480084366565_n.jpg" 
                 onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800' }}
                 className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0"
                 alt="Zarin Tasnim"
@@ -159,21 +149,14 @@ const App = () => {
             </div>
             
             <div className="absolute -bottom-6 -right-6 p-5 bg-indigo-600 rounded-2xl shadow-2xl hidden md:block transform rotate-2">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 text-white">
                  <MapPin className="w-4 h-4 text-white/70" />
-                 <span className="text-xs font-black uppercase tracking-widest">Dhaka, Bangladesh</span>
+                 <span className="text-xs font-black uppercase tracking-widest">Malibagh Railgate, Dhaka</span>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
-
-      {/* SKILLS SCROLL */}
-      <div className="w-full border-y border-white/5 bg-white/[0.01] py-10 overflow-hidden">
-        <div className="flex gap-12 text-[10px] font-black uppercase tracking-[0.5em] text-white/20 whitespace-nowrap animate-pulse justify-center">
-            <span>Figma</span> • <span>Selenium</span> • <span>Python</span> • <span>React</span> • <span>C#</span> • <span>MySQL</span> • <span>Jira</span> • <span>Huly</span> • <span>User Research</span>
-        </div>
-      </div>
 
       {/* CASE STUDIES */}
       <section id="works" className="py-32 px-6 max-w-7xl mx-auto">
@@ -198,68 +181,81 @@ const App = () => {
         </div>
       </section>
 
-      {/* LICENSES / CERTIFICATES */}
-      <section id="certifications" className="py-32 bg-[#0A0A0A] px-6">
+      {/* RESEARCH SECTION */}
+      <section id="research" className="py-32 bg-[#080808] px-6">
         <div className="max-w-7xl mx-auto">
-          <h3 className="text-3xl font-black italic mb-12 uppercase tracking-tighter">Certifications.</h3>
-          <div className="grid md:grid-cols-3 gap-6">
-             {[
-               { name: "Cyber Security Training", org: "BCC - EDGE Project", id: "Hire & Train/CS/1001", icon: <ShieldCheck /> },
-               { name: "Intro to UI/UX Design", org: "Le Wagon", id: "Issued 2024", icon: <PenTool /> },
-               { name: "Digital Skills: UX", org: "Accenture", id: "Verified", icon: <Sparkles /> }
-             ].map((cert, i) => (
-               <div key={i} className="flex items-center gap-5 p-6 bg-white/5 rounded-2xl border border-white/10">
-                 <div className="text-indigo-500">{cert.icon}</div>
-                 <div>
-                    <h5 className="font-bold text-sm leading-tight uppercase">{cert.name}</h5>
-                    <p className="text-[10px] text-gray-500 uppercase font-black tracking-tight">{cert.org}</p>
-                 </div>
-               </div>
-             ))}
+          <motion.div {...fadeInUp} className="mb-16">
+            <h2 className="text-4xl font-black italic uppercase tracking-tighter leading-none">Research <br/>Publications.</h2>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.a 
+              href="https://link.springer.com/chapter/10.1007/978-3-031-34732-0_34"
+              target="_blank"
+              {...fadeInUp} 
+              className="p-10 bg-white/5 border border-white/10 rounded-[2.5rem] block group hover:border-indigo-600 transition-all"
+            >
+              <div className="text-[10px] font-bold text-indigo-500 mb-4 uppercase tracking-[0.2em]">HCI International 2023, Denmark</div>
+              <h3 className="text-2xl font-bold uppercase italic leading-tight group-hover:text-indigo-400 transition-colors">PAINTIQUE: Interaction Model of Line Following Spray-Painting Robot</h3>
+              <p className="mt-6 text-gray-400 text-sm leading-relaxed">Exploring the intersection of robotics and artistic interaction models in a professional spray-painting context.</p>
+            </motion.a>
+
+            <motion.a 
+              href="https://link.springer.com/chapter/10.1007/978-981-99-8715-3"
+              target="_blank"
+              {...fadeInUp} 
+              className="p-10 bg-white/5 border border-white/10 rounded-[2.5rem] block group hover:border-indigo-600 transition-all"
+            >
+              <div className="text-[10px] font-bold text-indigo-500 mb-4 uppercase tracking-[0.2em]">ICSR 2023: Social Robotics</div>
+              <h3 className="text-2xl font-bold uppercase italic leading-tight group-hover:text-indigo-400 transition-colors">Can a Robot Collaborate with Alpana Artists? Concept Design</h3>
+              <p className="mt-6 text-gray-400 text-sm leading-relaxed">A conceptual design study on social robotics collaborating with traditional artists in Bangladesh.</p>
+            </motion.a>
           </div>
         </div>
       </section>
 
-      {/* RESEARCH & EDUCATION */}
+      {/* ACADEMIC PATH & CREDENTIALS */}
       <section id="credentials" className="py-32 px-6">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20">
-          <div id="research" className="space-y-12">
-            <h3 className="text-3xl font-black italic uppercase tracking-tighter">Research Publications.</h3>
-            <div className="space-y-6">
-              {[
-                { 
-                  title: "PAINTIQUE: Interaction Model of Line Following Spray-Painting Robot", 
-                  venue: "HCI International 2023, Denmark", 
-                  link: "https://link.springer.com/chapter/10.1007/978-3-031-34732-0_34" 
-                },
-                { 
-                  title: "Can a Robot Collaborate with Alpana Artists? Concept Design", 
-                  venue: "ICSR 2023: Social Robotics", 
-                  link: "https://link.springer.com/chapter/10.1007/978-981-99-8715-3" 
-                }
-              ].map((res, i) => (
-                <a key={i} href={res.link} target="_blank" rel="noopener noreferrer" className="p-8 bg-white/5 rounded-3xl border border-white/10 hover:border-indigo-600 transition-all group block">
-                  <p className="text-[10px] font-bold text-indigo-500 mb-2 uppercase tracking-widest">{res.venue}</p>
-                  <h4 className="text-lg font-bold group-hover:text-indigo-400 transition-colors leading-tight">{res.title}</h4>
-                </a>
-              ))}
-            </div>
-          </div>
-
           <div className="space-y-12">
             <h3 className="text-3xl font-black italic uppercase tracking-tighter">Academic Path.</h3>
             <div className="space-y-6">
                <div className="p-8 bg-white/5 rounded-[2rem] border border-white/10">
-                  <p className="text-[10px] font-bold text-indigo-500 mb-1 uppercase tracking-widest underline underline-offset-4">Ongoing</p>
-                  <h4 className="font-bold text-xl uppercase">University of Dhaka (IIT)</h4>
-                  <p className="text-sm text-gray-400">Executive Masters in Information Technology (EMIT)</p>
+                  <p className="text-[10px] font-bold text-indigo-500 mb-1 uppercase tracking-widest">Ongoing</p>
+                  <h4 className="font-bold text-xl uppercase italic">University of Dhaka (IIT)</h4>
+                  <p className="text-sm text-gray-400 font-medium">Executive Masters in Information Technology (EMIT)</p>
                </div>
                <div className="p-8 bg-white/5 rounded-[2rem] border border-white/10">
-                  <p className="text-[10px] font-bold text-gray-500 mb-1 uppercase tracking-widest">2020 - 2024</p>
-                  <h4 className="font-bold text-xl uppercase italic">AIUB</h4>
+                  <p className="text-[10px] font-bold text-gray-500 mb-1 uppercase tracking-widest">Graduated 2024</p>
+                  <h4 className="font-bold text-xl uppercase italic">American International University-Bangladesh (AIUB)</h4>
                   <p className="text-sm text-gray-400 mb-1">Bachelor of Computer Science & Engineering</p>
-                  <p className="text-xs font-bold text-indigo-400 uppercase tracking-widest underline decoration-indigo-500/30">Major: Software Engineering • CGPA: 3.63</p>
+                  <p className="text-xs font-bold text-indigo-400 uppercase tracking-widest underline decoration-indigo-500/30 underline-offset-4">Major: Software Engineering • CGPA: 3.63</p>
                </div>
+               <div className="p-8 bg-white/5 rounded-[2rem] border border-white/10 opacity-70">
+                  <p className="text-[10px] font-bold text-gray-500 mb-1 uppercase tracking-widest">Secondary Education</p>
+                  <h4 className="font-bold text-xl uppercase italic">Motijheel Govt. Girls High School</h4>
+                  <p className="text-sm text-gray-400">Science Stream • GPA: 5.00/5.00</p>
+               </div>
+            </div>
+          </div>
+          
+          <div className="space-y-12">
+            <h3 className="text-3xl font-black italic uppercase tracking-tighter">Certifications.</h3>
+            <div className="grid gap-4">
+               {[
+                 { name: "Cyber Security Training", org: "BCC - EDGE Project", icon: <ShieldCheck className="w-5 h-5" /> },
+                 { name: "Digital Skills: User Experience", org: "Accenture", icon: <PenTool className="w-5 h-5" /> },
+                 { name: "Intro to UI/UX Design", org: "Great Learning Academy", icon: <Sparkles className="w-5 h-5" /> },
+                 { name: "Security Architecture", org: "Cisco Networking Academy", icon: <ShieldCheck className="w-5 h-5" /> }
+               ].map((cert, i) => (
+                 <div key={i} className="flex items-center gap-5 p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
+                   <div className="text-indigo-500">{cert.icon}</div>
+                   <div>
+                      <h5 className="font-bold text-sm uppercase leading-tight">{cert.name}</h5>
+                      <p className="text-[10px] text-gray-500 uppercase font-black tracking-tight">{cert.org}</p>
+                   </div>
+                 </div>
+               ))}
             </div>
           </div>
         </div>
@@ -274,13 +270,13 @@ const App = () => {
               <Mail className="w-4 h-4" /> Send Email
             </a>
             <div className="flex gap-4">
-               <a href="https://www.behance.net/zarintasnim2025" target="_blank" rel="noopener noreferrer" className="px-8 py-5 border border-white/10 rounded-xl font-bold uppercase text-[11px] tracking-widest hover:border-white transition-colors">Behance</a>
-               <a href="https://dribbble.com/tasnim2025" target="_blank" rel="noopener noreferrer" className="px-8 py-5 border border-white/10 rounded-xl font-bold uppercase text-[11px] tracking-widest hover:border-white transition-colors">Dribbble</a>
+               <a href="https://github.com/ZarinTasnim20" target="_blank" className="px-8 py-5 border border-white/10 rounded-xl font-bold uppercase text-[11px] tracking-widest hover:border-white transition-colors">Github</a>
+               <a href="https://www.behance.net/zarintasnim2025" target="_blank" className="px-8 py-5 border border-white/10 rounded-xl font-bold uppercase text-[11px] tracking-widest hover:border-white transition-colors">Behance</a>
             </div>
           </div>
         </div>
         <div className="mt-40 pt-10 text-[10px] font-bold text-white/20 tracking-[0.6em] uppercase">
-          © 2026 Zarin Tasnim • Dhaka, Bangladesh
+          © 2026 Zarin Tasnim • Malibagh Railgate, Dhaka
         </div>
       </footer>
 
