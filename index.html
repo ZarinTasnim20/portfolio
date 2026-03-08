@@ -24,6 +24,15 @@ const App = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Smooth scroll function for the "Explore My Work" button
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -72,9 +81,9 @@ const App = () => {
             <span className="font-bold text-lg tracking-tighter uppercase italic">Zarin Tasnim.</span>
           </div>
           <div className="hidden md:flex gap-8 text-[11px] font-bold tracking-widest text-white/40 uppercase">
-            <a href="#works" className="hover:text-white transition-colors">Case Studies</a>
-            <a href="#research" className="hover:text-white transition-colors">Research</a>
-            <a href="#credentials" className="hover:text-white transition-colors">Education</a>
+            <a href="#works" onClick={(e) => scrollToSection(e, 'works')} className="hover:text-white transition-colors">Case Studies</a>
+            <a href="#research" onClick={(e) => scrollToSection(e, 'research')} className="hover:text-white transition-colors">Research</a>
+            <a href="#credentials" onClick={(e) => scrollToSection(e, 'credentials')} className="hover:text-white transition-colors">Education</a>
           </div>
           <div className="flex gap-4">
             <a href="https://www.behance.net/zarintasnim2025" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white transition-colors"><ExternalLink className="w-4 h-4" /></a>
@@ -107,21 +116,33 @@ const App = () => {
                 I am a Software Engineer (AIUB) bridging the gap between <span className="text-white font-bold underline decoration-indigo-500/50 underline-offset-4">technical logic</span> and <span className="text-white font-bold underline decoration-indigo-500/50 underline-offset-4">human-centered design</span>.
               </p>
               <p className="text-gray-400 text-sm leading-relaxed max-w-lg">
-                I specialize in building functional, aesthetically pleasing systems. Currently, I am a Junior UI/UX Designer at **ARS** and pursuing my **EMIT at the University of Dhaka (IIT)**, focusing on transforming complex requirements into intuitive digital products.
+                I specialize in building functional, aesthetically pleasing systems. Currently, I am a Junior UI/UX Designer at **ARS** and pursuing my **EMIT at the University of Dhaka (IIT)**.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-4 pt-4">
-              {/* Explore Work Button - Scroll to Projects Section */}
-              <a href="#works" className="px-8 py-4 bg-white text-black text-[11px] font-black uppercase tracking-widest rounded hover:bg-indigo-600 hover:text-white transition-all shadow-lg shadow-white/5">
+              {/* Explore Work Button */}
+              <button 
+                onClick={(e) => scrollToSection(e, 'works')}
+                className="px-8 py-4 bg-white text-black text-[11px] font-black uppercase tracking-widest rounded hover:bg-indigo-600 hover:text-white transition-all shadow-lg shadow-white/5"
+              >
                 Explore My Work
-              </a>
-              {/* View CV Button - Linked to your cv.pdf file */}
-              <a href="cv.pdf" target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-indigo-600/10 border border-indigo-600/30 text-indigo-400 text-[11px] font-black uppercase tracking-widest rounded hover:bg-indigo-600 hover:text-white transition-all flex items-center gap-2">
+              </button>
+              
+              {/* View CV Button - UPDATED LINK to match your uploaded file */}
+              <a 
+                href="Zarin Tasnim.(CV).pdf" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="px-8 py-4 bg-indigo-600/10 border border-indigo-600/30 text-indigo-400 text-[11px] font-black uppercase tracking-widest rounded hover:bg-indigo-600 hover:text-white transition-all flex items-center gap-2"
+              >
                 <FileText className="w-4 h-4" /> View CV
               </a>
+              
               <div className="flex gap-2">
-                <a href="https://github.com/ZarinTasnim20" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/5 rounded border border-white/10 hover:bg-white/10 transition-all"><Github className="w-5 h-5" /></a>
+                <a href="https://github.com/ZarinTasnim20" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/5 rounded border border-white/10 hover:bg-white/10 transition-all">
+                  <Github className="w-5 h-5" />
+                </a>
               </div>
             </div>
           </motion.div>
