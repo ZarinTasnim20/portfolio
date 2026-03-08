@@ -10,7 +10,8 @@ import {
   GraduationCap,
   Award,
   BookOpen,
-  Briefcase
+  Briefcase,
+  ExternalLink
 } from 'lucide-react';
 
 const App = () => {
@@ -26,7 +27,16 @@ const App = () => {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const offset = 80; // Offset for fixed header
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -99,13 +109,13 @@ const App = () => {
           </div>
           <div className="hidden md:flex gap-8 text-[11px] font-bold tracking-widest text-white/40 uppercase">
             <a href="#works" onClick={(e) => scrollToSection(e, 'works')} className="hover:text-white transition-colors cursor-pointer">Works</a>
+            <a href="#path" onClick={(e) => scrollToSection(e, 'path')} className="hover:text-white transition-colors cursor-pointer">Education</a>
             <a href="#research" onClick={(e) => scrollToSection(e, 'research')} className="hover:text-white transition-colors cursor-pointer">Research</a>
-            <a href="#path" onClick={(e) => scrollToSection(e, 'path')} className="hover:text-white transition-colors cursor-pointer">Professional Path</a>
             <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="hover:text-white transition-colors cursor-pointer">Contact</a>
           </div>
           <div className="flex gap-4">
-            <a href="https://github.com/ZarinTasnim20" target="_blank" className="text-white/40 hover:text-white transition-colors"><Github className="w-4 h-4" /></a>
-            <a href="https://www.behance.net/zarintasnim2025" target="_blank" className="text-white/40 hover:text-white transition-colors"><Palette className="w-4 h-4" /></a>
+            <a href="https://github.com/ZarinTasnim20" target="_blank" rel="noreferrer" className="text-white/40 hover:text-white transition-colors"><Github className="w-4 h-4" /></a>
+            <a href="https://www.behance.net/zarintasnim2025" target="_blank" rel="noreferrer" className="text-white/40 hover:text-white transition-colors"><Palette className="w-4 h-4" /></a>
           </div>
         </div>
       </nav>
@@ -122,13 +132,13 @@ const App = () => {
               <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
               <span className="text-[10px] font-bold uppercase tracking-widest text-indigo-400">Software Engineer • UI/UX Designer</span>
             </div>
-            <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] italic">
+            <h1 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] italic">
               INNOVATING <br/> 
               <span className="text-indigo-600">DIGITAL</span> <br/>
               INTERFACES.
             </h1>
             
-            <div className="space-y-4 border-l-2 border-indigo-600/30 pl-6">
+            <div className="space-y-4 border-l-2 border-indigo-600/30 pl-6 text-left">
               <p className="text-gray-300 text-lg leading-relaxed font-medium">
                 I am a Software Engineer (AIUB) bridging the gap between <span className="text-white font-bold underline decoration-indigo-500/50 underline-offset-4">technical logic</span> and <span className="text-white font-bold underline decoration-indigo-500/50 underline-offset-4">human-centered design</span>.
               </p>
@@ -162,7 +172,7 @@ const App = () => {
             </div>
             
             <div className="absolute -bottom-6 -right-6 p-5 bg-indigo-600 rounded-2xl shadow-2xl hidden md:block transform rotate-2">
-              <div className="flex items-center gap-3 text-white">
+              <div className="flex items-center gap-3 text-white text-left">
                  <MapPin className="w-4 h-4 text-white/70" />
                  <span className="text-xs font-black uppercase tracking-widest">Dhaka, Bangladesh</span>
               </div>
@@ -173,7 +183,7 @@ const App = () => {
 
       {/* CASE STUDIES */}
       <section id="works" className="py-32 px-6 max-w-7xl mx-auto">
-        <motion.div {...fadeInUp} className="mb-20">
+        <motion.div {...fadeInUp} className="mb-20 text-left">
           <h2 className="text-4xl font-black italic uppercase tracking-tighter leading-none">Design <br/>Case Studies.</h2>
         </motion.div>
 
@@ -191,7 +201,7 @@ const App = () => {
                 <div className="p-10 space-y-4">
                   <div className="flex justify-between items-center">
                     <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">{p.cat}</span>
-                    <a href={p.link} target="_blank" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors">
+                    <a href={p.link} target="_blank" rel="noreferrer" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors">
                        <ArrowUpRight className="w-4 h-4" />
                     </a>
                   </div>
@@ -211,7 +221,7 @@ const App = () => {
       {/* PROFESSIONAL PATH & EDUCATION */}
       <section id="path" className="py-32 px-6 max-w-7xl mx-auto border-t border-white/5">
         <div className="grid lg:grid-cols-3 gap-16">
-          <motion.div {...fadeInUp} className="lg:col-span-1">
+          <motion.div {...fadeInUp} className="lg:col-span-1 text-left">
             <h2 className="text-4xl font-black italic uppercase tracking-tighter leading-none mb-6">Professional <br/>Path.</h2>
             <p className="text-gray-400 text-sm leading-relaxed mb-8">
               A journey of blending technical expertise with creative problem solving.
@@ -223,7 +233,7 @@ const App = () => {
             </div>
           </motion.div>
 
-          <div className="lg:col-span-2 space-y-12">
+          <div className="lg:col-span-2 space-y-12 text-left">
             {education.map((edu, idx) => (
               <motion.div key={idx} {...fadeInUp} className="relative pl-8 border-l-2 border-indigo-600/30">
                 <div className="absolute -left-[9px] top-0 w-4 h-4 bg-indigo-600 rounded-full border-4 border-[#050505]" />
@@ -256,7 +266,7 @@ const App = () => {
       {/* RESEARCH SECTION */}
       <section id="research" className="py-32 bg-[#080808] px-6 border-t border-white/5">
         <div className="max-w-7xl mx-auto">
-          <motion.div {...fadeInUp} className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <motion.div {...fadeInUp} className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 text-left">
             <div>
               <h2 className="text-4xl font-black italic uppercase tracking-tighter leading-none">Research <br/>Publications.</h2>
             </div>
@@ -272,10 +282,11 @@ const App = () => {
             </div>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 text-left">
             <motion.a 
               href="https://link.springer.com/chapter/10.1007/978-3-031-34732-0_34"
               target="_blank"
+              rel="noreferrer"
               {...fadeInUp} 
               className="p-10 bg-white/5 border border-white/10 rounded-[2.5rem] block group hover:border-indigo-600 transition-all relative overflow-hidden"
             >
@@ -291,6 +302,7 @@ const App = () => {
             <motion.a 
               href="https://link.springer.com/chapter/10.1007/978-981-99-8715-3"
               target="_blank"
+              rel="noreferrer"
               {...fadeInUp} 
               className="p-10 bg-white/5 border border-white/10 rounded-[2.5rem] block group hover:border-indigo-600 transition-all relative overflow-hidden"
             >
@@ -309,12 +321,12 @@ const App = () => {
       {/* CONTACT BAR & FOOTER */}
       <footer id="contact" className="py-32 px-6 text-center border-t border-white/5 bg-[#050505] relative overflow-hidden">
         {/* Contact Bar Floating Element */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-indigo-600 px-8 py-4 rounded-full shadow-2xl flex items-center gap-8 border border-white/20 backdrop-blur-md">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-indigo-600 px-8 py-4 rounded-full shadow-2xl flex items-center gap-8 border border-white/20 backdrop-blur-md z-10">
             <a href="mailto:tasnimtozarin2.1@gmail.com" className="text-white hover:text-white/80 transition-colors"><Mail className="w-5 h-5" /></a>
             <div className="w-[1px] h-4 bg-white/20" />
-            <a href="https://github.com/ZarinTasnim20" target="_blank" className="text-white hover:text-white/80 transition-colors"><Github className="w-5 h-5" /></a>
+            <a href="https://github.com/ZarinTasnim20" target="_blank" rel="noreferrer" className="text-white hover:text-white/80 transition-colors"><Github className="w-5 h-5" /></a>
             <div className="w-[1px] h-4 bg-white/20" />
-            <a href="https://www.behance.net/zarintasnim2025" target="_blank" className="text-white hover:text-white/80 transition-colors"><Palette className="w-5 h-5" /></a>
+            <a href="https://www.behance.net/zarintasnim2025" target="_blank" rel="noreferrer" className="text-white hover:text-white/80 transition-colors"><Palette className="w-5 h-5" /></a>
         </div>
 
         <div className="max-w-4xl mx-auto space-y-12">
@@ -326,11 +338,11 @@ const App = () => {
                 <span>tasnimtozarin2.1@gmail.com</span>
              </a>
              <div className="grid grid-cols-2 gap-4">
-                <a href="https://github.com/ZarinTasnim20" target="_blank" className="bg-white/5 border border-white/10 rounded-[2rem] p-6 flex flex-col items-center justify-center gap-2 hover:border-indigo-600 transition-colors group">
+                <a href="https://github.com/ZarinTasnim20" target="_blank" rel="noreferrer" className="bg-white/5 border border-white/10 rounded-[2rem] p-6 flex flex-col items-center justify-center gap-2 hover:border-indigo-600 transition-colors group">
                    <Github className="w-6 h-6 text-indigo-500" />
                    <span className="text-[9px] font-black uppercase tracking-[0.2em]">Github</span>
                 </a>
-                <a href="https://www.behance.net/zarintasnim2025" target="_blank" className="bg-white/5 border border-white/10 rounded-[2rem] p-6 flex flex-col items-center justify-center gap-2 hover:border-indigo-600 transition-colors group">
+                <a href="https://www.behance.net/zarintasnim2025" target="_blank" rel="noreferrer" className="bg-white/5 border border-white/10 rounded-[2rem] p-6 flex flex-col items-center justify-center gap-2 hover:border-indigo-600 transition-colors group">
                    <Palette className="w-6 h-6 text-indigo-500" />
                    <span className="text-[9px] font-black uppercase tracking-[0.2em]">Behance</span>
                 </a>
@@ -341,8 +353,8 @@ const App = () => {
         <div className="mt-40 flex flex-col items-center gap-8">
             <div className="flex gap-12 text-[10px] font-black uppercase tracking-[0.4em] text-white/30">
                <a href="#works" onClick={(e) => scrollToSection(e, 'works')} className="hover:text-indigo-500 transition-colors">Works</a>
-               <a href="#research" onClick={(e) => scrollToSection(e, 'research')} className="hover:text-indigo-500 transition-colors">Research</a>
                <a href="#path" onClick={(e) => scrollToSection(e, 'path')} className="hover:text-indigo-500 transition-colors">Path</a>
+               <a href="#research" onClick={(e) => scrollToSection(e, 'research')} className="hover:text-indigo-500 transition-colors">Research</a>
             </div>
             <div className="text-[10px] font-bold text-white/10 tracking-[0.6em] uppercase">
               © 2026 Zarin Tasnim • Dhaka, Bangladesh
